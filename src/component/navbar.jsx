@@ -1,16 +1,25 @@
 import { FiMenu, FiSearch, FiBell } from "react-icons/fi";
 
-const Navbar = () => {
+const Navbar = ({ setIsOpen }) => {
   return (
-<div className="w-full h-14 bg-white flex items-center justify-between px-5 shadow-sm">
+    <div className="w-full h-14 bg-white flex items-center justify-between px-4 shadow-sm">
+
       {/* LEFT SIDE */}
-      <div className="flex items-center gap-6 w-1/2">
+      <div className="flex items-center gap-3 w-full md:w-1/2">
 
-        {/* Menu Icon */}
-        <FiMenu className="text-xl text-gray-600 cursor-pointer" />
+        {/* ✅ MENU BUTTON (mobile only) */}
+        <button
+          className="md:hidden text-xl text-gray-600"
+          onClick={() => setIsOpen(true)}
+        >
+          <FiMenu />
+        </button>
 
-        {/* Search Bar */}
-        <div className="flex items-center bg-gray-100 px-3 py-2 rounded-full w-full max-w-md">
+        {/* ✅ DESKTOP MENU ICON */}
+        <FiMenu className="hidden md:block text-xl text-gray-600 cursor-pointer" />
+
+        {/* SEARCH */}
+        <div className="flex items-center bg-gray-100 px-3 py-1.5 rounded-full w-full max-w-sm">
           <FiSearch className="text-gray-400 mr-2" />
           <input
             type="text"
@@ -22,18 +31,18 @@ const Navbar = () => {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-4 md:gap-6">
 
-        {/* Notification */}
+        {/* NOTIFICATION */}
         <div className="relative">
-          <FiBell className="text-xl text-gray-600 cursor-pointer" />
-          <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
+          <FiBell className="text-lg md:text-xl text-gray-600 cursor-pointer" />
+          <span className="absolute -top-1 -right-2 bg-red-500 text-white text-[10px] px-1 rounded-full">
             6
           </span>
         </div>
 
-        {/* Language */}
-        <div className="flex items-center gap-1 cursor-pointer">
+        {/* LANGUAGE (hide mobile) */}
+        <div className="hidden md:flex items-center gap-1 cursor-pointer">
           <img
             src="https://flagcdn.com/w40/gb.png"
             alt="flag"
@@ -42,14 +51,14 @@ const Navbar = () => {
           <span className="text-sm">English</span>
         </div>
 
-        {/* Profile */}
+        {/* PROFILE */}
         <div className="flex items-center gap-2 cursor-pointer">
           <img
             src="https://i.pravatar.cc/40"
             alt="profile"
-            className="w-8 h-8 rounded-full"
+            className="w-7 h-7 md:w-8 md:h-8 rounded-full"
           />
-          <div className="text-sm">
+          <div className="hidden md:block text-sm">
             <p className="font-medium">Moni Roy</p>
             <p className="text-gray-400 text-xs">Admin</p>
           </div>
