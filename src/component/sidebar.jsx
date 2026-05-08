@@ -97,11 +97,12 @@ const Sidebar = () => {
 
                 </div>
 
-                <div className="mt-2 mb-6 px-0">
-                    <NavLink to="/logout" className={menuClass}>
-                        <MdLogout size={20} /> Logout
-                    </NavLink>
-                </div>
+                <button
+                    disabled
+                    className="flex items-center gap-2 py-2 px-3 text-xs text-gray-400 w-full cursor-not-allowed opacity-50"
+                >
+                    <MdLogout size={20} /> Logout
+                </button>
             </div>
         </div>
     );
