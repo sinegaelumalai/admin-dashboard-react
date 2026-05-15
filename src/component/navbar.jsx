@@ -1,19 +1,19 @@
-import { FiMenu, FiSearch } from "react-icons/fi";
-import { useLocation } from "react-router-dom";   // 🔥 ADD THIS
+import { FiSearch } from "react-icons/fi"; // ✅ keep search only
+import { useLocation } from "react-router-dom";
 import bellicon from "../assets/bellicon.png";
-import navlogo from "../assets/navlogo.png";
+import femalelogo from "../assets/femalelogo.png";
+import slogo2 from "../assets/slogo2.png"; // ✅ use your image
 
 const Navbar = ({ setIsOpen }) => {
 
-  const location = useLocation();   // 🔥 GET CURRENT ROUTE
+  const location = useLocation();
 
-  // 🔥 TITLE CHANGE BASED ON PAGE
   const getTitle = () => {
     if (location.pathname === "/") return "Overview";
     if (location.pathname === "/transactions") return "Transactions";
     if (location.pathname === "/accounts") return "Accounts";
     if (location.pathname === "/investments") return "Investments";
-    if (location.pathname === "/credit-cards") return "Credit Cards";
+    if (location.pathname === "/creditcards") return "Credit Cards";
     if (location.pathname === "/loans") return "Loans";
     if (location.pathname === "/settings") return "Settings";
     if (location.pathname === "/settings/preferences") return "Preferences";
@@ -25,21 +25,24 @@ const Navbar = ({ setIsOpen }) => {
   return (
     <div className="w-full h-16 bg-gray-50 flex items-center justify-between px-4 md:px-6">
 
-      {/* LEFT */}
-      <div className="flex items-center md:hidden">
-        <button onClick={() => setIsOpen(prev => !prev)}>  {/* 🔥 FIX TOGGLE */}
-          <FiMenu size={22} className="text-gray-700" />
-        </button>
+      {/* 🔹 LEFT (MENU IMAGE) */}
+      <div
+        onClick={() => setIsOpen(prev => !prev)}
+        className="md:hidden cursor-pointer"
+      >
+        <div className="w-6 h-[2px] bg-gray-700 mb-1"></div>
+        <div className="w-6 h-[2px] bg-gray-700 mb-1"></div>
+        <div className="w-6 h-[2px] bg-gray-700"></div>
       </div>
 
-      {/* CENTER */}
+      {/* 🔹 TITLE */}
       <div className="flex-1 flex justify-center md:justify-start">
         <h1 className="text-lg md:text-2xl font-semibold text-gray-700">
-          {getTitle()}   {/* 🔥 DYNAMIC TITLE */}
+          {getTitle()}
         </h1>
       </div>
 
-      {/* RIGHT */}
+      {/* 🔹 RIGHT */}
       <div className="flex items-center gap-3 md:gap-5">
 
         <div className="hidden md:flex items-center bg-gray-200 px-4 py-2 rounded-full w-72">
@@ -67,7 +70,7 @@ const Navbar = ({ setIsOpen }) => {
         </div>
 
         <img
-          src={navlogo}
+          src={femalelogo}
           className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover"
         />
       </div>
