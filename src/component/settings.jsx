@@ -1,86 +1,133 @@
-import { MdOutlineCameraAlt } from "react-icons/md";
+import femalelogo from "../assets/femalelogo.png";
+import { useNavigate, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Settings = () => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
-    <div className="p-4 h-screen overflow-hidden">
+    <div className="p-4 md:p-6 bg-gray-100 min-h-screen">
 
-      {/* Title */}
-      <h1 className="text-xl font-semibold mb-3">General Settings</h1>
+      <div className="bg-white rounded-2xl p-6 md:p-8 space-y-6">
 
-      {/* Card */}
-      <div className="bg-white border border-gray-200 rounded-2xl 
-                      h-[calc(100vh-150px)] 
-                      p-6 flex flex-col justify-between">
+        {/* 🔹 TABS */}
 
-        {/* TOP CONTENT */}
-        <div>
+        <div className="flex gap-6 border-b pb-2 text-sm">
 
-          {/* Logo */}
-          <div className="flex flex-col items-center mb-6">
-            <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
-              <MdOutlineCameraAlt size={20} className="text-gray-600" />
-            </div>
-            <p className="text-blue-500 text-xs mt-1 cursor-pointer">
-              Upload Logo
-            </p>
-          </div>
+          {/* Edit Profile */}
+          <NavLink
+            to="/settings"
+            className={({ isActive }) =>
+              `pb-1 ${isActive
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-400"
+              }`
+            }
+          >
+            Edit Profile
+          </NavLink>
 
-          {/* Form */}
-          <div className="grid grid-cols-2 gap-6">
+          {/* Preferences */}
+          <NavLink
+            to="/settings/preferences"
+            className={({ isActive }) =>
+              `pb-1 ${isActive
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-400"
+              }`
+            }
+          >
+            Preferences
+          </NavLink>
 
-            <div>
-              <label className="text-xs text-gray-500">Site Name</label>
-              <input
-                value="Bright Web"
-                className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-md text-sm outline-none"
-              />
-            </div>
+          {/* Security */}
+          <NavLink
+            to="/settings/security"
+            className={({ isActive }) =>
+              `pb-1 ${isActive
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-400"
+              }`
+            }
+          >
+            Security
+          </NavLink>
 
-            <div>
-              <label className="text-xs text-gray-500">Copy Right</label>
-              <input
-                value="All rights Reserved@brightweb"
-                className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-md text-sm outline-none"
-              />
-            </div>
-
-            <div>
-              <label className="text-xs text-gray-500">SEO Title</label>
-              <input
-                value="Bright web is a hybrid dashboard"
-                className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-md text-sm outline-none"
-              />
-            </div>
-
-            <div>
-              <label className="text-xs text-gray-500">SEO Description</label>
-              <textarea
-                rows="4"
-                className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-md text-sm outline-none resize-none"
-              >
-                Bright web is a hybrid dashboard
-              </textarea>
-            </div>
-
-            <div>
-              <label className="text-xs text-gray-500">SEO Keywords</label>
-              <input
-                value="CEO"
-                className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-md text-sm outline-none"
-              />
-            </div>
-
-          </div>
         </div>
 
-        {/* SAVE BUTTON */}
-        <div className="flex justify-center mt-4">
-          <button className="bg-blue-500 text-white px-12 py-2 rounded-lg text-sm">
+        {/* 🔹 CONTENT */}
+        <div className="flex flex-col lg:flex-row gap-8">
+
+          {/* PROFILE IMAGE */}
+          <div className="flex justify-center lg:justify-start">
+            <div className="relative w-fit">
+              <img
+                src={femalelogo}
+                alt=""
+                className="w-28 h-28 rounded-full object-cover"
+              />
+
+              {/* ✅ FIXED POSITION */}
+              <div className="absolute top-2 right-2 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm cursor-pointer shadow-md">
+                ✎
+              </div>
+            </div>
+          </div>
+
+          {/* FORM */}
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            {[
+              "Your Name",
+              "User Name",
+              "Email",
+              "Password",
+              "Date of Birth",
+              "Present Address",
+              "Permanent Address",
+              "City",
+              "Postal Code",
+              "Country",
+            ].map((label, i) => (
+              <div key={i}>
+                <label className="text-sm text-gray-600">{label}</label>
+                <input
+                  type="text"
+                  placeholder={
+                    label === "Password"
+                      ? "**********"
+                      : label === "Email"
+                        ? "charlenereed@gmail.com"
+                        : label === "Date of Birth"
+                          ? "25 January 1990"
+                          : label === "City"
+                            ? "San Jose"
+                            : label === "Postal Code"
+                              ? "45962"
+                              : label === "Country"
+                                ? "USA"
+                                : "Charlene Reed"
+                  }
+                  className="w-full mt-2 px-4 py-3 rounded-full border border-gray-200 outline-none text-sm text-gray-600"
+                />
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+        {/* 🔹 SAVE BUTTON */}
+        <div className="flex justify-end">
+          <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full text-sm">
             Save
           </button>
         </div>
 
       </div>
+
     </div>
   );
 };

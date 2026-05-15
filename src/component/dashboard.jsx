@@ -1,93 +1,173 @@
-import revenue from "../assets/revenue.png";
-import sales from '../assets/sales.jpeg';
-import round from '../assets/round.jpeg';
+import chip from "../assets/chip.png";
+import expense from "../assets/expense.png";
+import weeklyack from "../assets/weeklyack.png";
+import qcktransfer from "../assets/qcktransfer.png";
+import blhistory from "../assets/blhistory.png";
+import leftlogo from "../assets/leftlogo.png";
 
 const Dashboard = () => {
     return (
-        <div className="p-0 space-y-2">
+        <div className="p-4 md:p-6 bg-gray-100 min-h-screen space-y-6">
 
-            {/* Title */}
-            <h1 className="text-2xl font-bold">Dashboard</h1>
+            {/* 🔹 TOP SECTION */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            {/* Revenue Card (IMPORTANT FIX) */}
-            <div className="bg-white p-4 md:p-5 rounded-2xl shadow-sm">
+                {/* LEFT - MY CARDS */}
+                <div className="lg:col-span-2 space-y-4">
 
-                {/* Header */}
-                <div className="flex justify-between items-center mb-5">
-                    <h2 className="text-base md:text-lg font-semibold">Revenue</h2>
-                    <button className="bg-gray-100 px-2.5 py-1 rounded text-xs md:text-sm">
-                        October
-                    </button>
+                    <div className="flex justify-between items-center">
+                        <h2 className="font-semibold text-lg text-gray-700">My Cards</h2>
+                        <span className="text-blue-500 text-sm cursor-pointer">See All</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                        {/* CARD 1 */}
+                        <div className="bg-gradient-to-r from-indigo-500 to-blue-600 text-white p-5 rounded-2xl relative">
+                            <img src={leftlogo} className="w-10 absolute top-4 right-4 opacity-80" />
+
+                            <p className="text-sm">Balance</p>
+                            <h3 className="text-xl font-bold">$5,756</h3>
+
+                            <div className="flex justify-between mt-6 text-xs">
+                                <div>
+                                    <p className="opacity-70">CARD HOLDER</p>
+                                    <p>Eddy Cusuma</p>
+                                </div>
+                                <div>
+                                    <p className="opacity-70">VALID THRU</p>
+                                    <p>12/22</p>
+                                </div>
+                            </div>
+
+                            <p className="mt-6 tracking-widest">3778 **** **** 1234</p>
+                        </div>
+
+                        {/* CARD 2 */}
+                        <div className="bg-white border p-5 rounded-2xl relative">
+                            <img src={chip} className="w-10 absolute top-4 right-4 opacity-60" />
+
+                            <p className="text-sm text-gray-400">Balance</p>
+                            <h3 className="text-xl font-bold">$5,756</h3>
+
+                            <div className="flex justify-between mt-6 text-xs text-gray-500">
+                                <div>
+                                    <p>CARD HOLDER</p>
+                                    <p className="text-gray-700">Eddy Cusuma</p>
+                                </div>
+                                <div>
+                                    <p>VALID THRU</p>
+                                    <p className="text-gray-700">12/22</p>
+                                </div>
+                            </div>
+
+                            <p className="mt-6 tracking-widest text-gray-600">
+                                3778 **** **** 1234
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
 
-                {/* Image */}
-                <img
-                    src={revenue}
-                    alt="revenue"
-                    className="w-full h-44 md:h-52 lg:h-60 object-cover"
-                />
+                {/* RIGHT - RECENT TRANSACTION */}
+                <div className="bg-white p-5 rounded-2xl shadow-sm">
+                    <h2 className="font-semibold text-lg text-gray-700 mb-4">
+                        Recent Transaction
+                    </h2>
 
-                {/* Legend */}
-                <div className="flex justify-center gap-4 mt-3 text-xs md:text-sm text-gray-500">
-                    <span className="flex items-center gap-1">
-                        <span className="w-2.5 h-2.5 bg-orange-400 rounded-full"></span> Sales
-                    </span>
-                    <span className="flex items-center gap-1">
-                        <span className="w-2.5 h-2.5 bg-purple-400 rounded-full"></span> Profit
-                    </span>
+                    <div className="space-y-4">
+
+                        <div className="flex justify-between items-center">
+                            <div className="flex gap-3">
+                                <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">💳</div>
+                                <div>
+                                    <p className="text-sm">Deposit from my</p>
+                                    <p className="text-xs text-gray-400">28 January 2021</p>
+                                </div>
+                            </div>
+                            <p className="text-red-500 text-sm">-$850</p>
+                        </div>
+
+                        <div className="flex justify-between items-center">
+                            <div className="flex gap-3">
+                                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">💲</div>
+                                <div>
+                                    <p className="text-sm">Deposit Paypal</p>
+                                    <p className="text-xs text-gray-400">25 January 2021</p>
+                                </div>
+                            </div>
+                            <p className="text-green-500 text-sm">+$2,500</p>
+                        </div>
+
+                        <div className="flex justify-between items-center">
+                            <div className="flex gap-3">
+                                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">🟢</div>
+                                <div>
+                                    <p className="text-sm">Jemi Wilson</p>
+                                    <p className="text-xs text-gray-400">21 January 2021</p>
+                                </div>
+                            </div>
+                            <p className="text-green-500 text-sm">+$5,400</p>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
 
-            {/* Bottom Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* 🔹 SECOND ROW */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                {/* Customers */}
-                <div className="bg-white p-4 rounded-2xl shadow-sm">
-                    <h3 className="font-semibold mb-3">Customers</h3>
-
-                    <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-4 border-gray-200">
-                        <img
-                            src={round}
-                            alt="profile"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
-
-                    <div className="flex justify-between mt-4 text-center">
-                        <div>
-                            <p className="text-lg font-bold">34,249</p>
-                            <p className="text-xs text-gray-400">New Customers</p>
-                        </div>
-                        <div>
-                            <p className="text-lg font-bold">1420</p>
-                            <p className="text-xs text-gray-400">Repeated</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Featured Product */}
-                <div className="bg-white p-4 rounded-2xl shadow-sm flex flex-col justify-between">
-                    <h3 className="font-semibold mb-3">Featured Product</h3>
-
-                    <div className="flex justify-between items-center">
-                        <button className="bg-gray-100 p-1.5 rounded-full">◀</button>
-                        <button className="bg-gray-100 p-1.5 rounded-full">▶</button>
-                    </div>
-
-                    <div className="text-center mt-4">
-                        <p className="text-sm">Beats Headphone 2019</p>
-                        <p className="text-blue-500 font-bold">$89.00</p>
-                    </div>
-                </div>
-
-                {/* Sales Analytics */}
-                <div className="bg-white p-4 rounded-2xl shadow-sm">
+                {/* WEEKLY ACTIVITY */}
+                <div className="lg:col-span-2 bg-white p-2 rounded-2xl">
                     <img
-                        src={sales}
-                        alt="Sales"
-                        className="w-full h-40 object-cover"
+                        src={weeklyack}
+                        alt="expense"
+                        className="w-[600px] h-90 "
                     />
+
+                </div>
+
+                {/* EXPENSE STATISTICS */}
+                <div className="bg-white p-5 rounded-2xl">
+                    <h2 className="font-semibold text-lg text-gray-700 mb-4">
+                        Expense Statistics
+                    </h2>
+
+                    <img
+                        src={expense}
+                        alt="expense"
+                        className="w-full h-52 object-contain"
+                    />
+                </div>
+
+            </div>
+
+            {/* 🔹 THIRD ROW */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                {/* QUICK TRANSFER */}
+                <div className="bg-white p-5 rounded-2xl">
+                    <h2 className="font-semibold mb-4">Quick Transfer</h2>
+
+                    <img
+                        src={qcktransfer}
+                        alt="expense"
+                        className="w-full h-75 object-contain"
+                    />
+
+
+                </div>
+
+                {/* BALANCE HISTORY */}
+                <div className="lg:col-span-2 bg-white p-5 rounded-2xl">
+                    <h2 className="font-semibold mb-4">Balance History</h2>
+                    <img
+                        src={blhistory}
+                        alt="expense"
+                        className="w-full h-75 object-contain"
+                    />
+
                 </div>
 
             </div>

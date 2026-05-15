@@ -1,111 +1,114 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
-    MdDashboard,
-    MdOutlineInventory2,
-    MdFavoriteBorder,
-    MdInbox,
-    MdList,
-    MdOutlineBarChart,
-    MdOutlineCalendarToday,
-    MdOutlineContacts,
-    MdOutlineSettings,
-    MdLogout
-} from "react-icons/md";
+import bankdeshlogo from "../assets/bankdeshlogo.png";
+import slogo1 from "../assets/slogo1.png";
+import slogo2 from "../assets/slogo2.png";
+import slogo3 from "../assets/slogo3.png";
+import slogo4 from "../assets/slogo4.png";
+import slogo5 from "../assets/slogo5.png";
+import slogo6 from "../assets/slogo6.png";
+import slogo7 from "../assets/slogo7.png";
+import slogo8 from "../assets/slogo8.png";
+import slogo9 from "../assets/slogo9.png"; // ✅ FIXED
 
 const Sidebar = () => {
 
-    const menuClass =
-        "flex items-center gap-2 py-2 px-3 text-xs rounded-md text-gray-600 hover:bg-blue-100";
+  const [open, setOpen] = useState(false); // ✅ FIXED
 
-    const activeClass =
-        "flex items-center gap-2 py-2 px-3 text-xs rounded-md bg-blue-500 text-white";
+  const menuClass =
+    "flex items-center gap-3 py-3 px-4 text-sm rounded-md text-gray-400 hover:text-blue-500";
 
-    return (
-        <div className="w-64 min-h-screen shadow-md flex flex-col">
-            {/* Logo */}
-            <h1 className="text-2xl font-bold text-blue-500 px-4 py-3">
-                Dash<span className="text-black">Stack</span>
-            </h1>
+  const activeClass =
+    "flex items-center gap-3 py-3 px-4 text-sm rounded-md text-blue-600 font-semibold";
 
-            {/* MENU + BOTTOM SPLIT */}
-            <div className="flex flex-col h-full">
+  return (
+    <>
+      {/* 🔹 Mobile Top Bar */}
+      <div className="md:hidden flex items-center justify-between p-4 shadow">
+        <h1 className="text-lg font-bold text-blue-500">Dashboard</h1>
 
-                {/* TOP MENU */}
-                <div className="space-y-1">
+        {/* ✅ MENU BUTTON IMAGE */}
+        <img
+          src={slogo1}
+          className="w-6 h-6 cursor-pointer"
+          onClick={() => setOpen(true)}
+        />
+      </div>
 
-                    <NavLink to="/" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdDashboard size={20} /> Dashboard
-                    </NavLink>
+      {/* 🔹 Overlay */}
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 md:hidden"
+          onClick={() => setOpen(false)}
+        />
+      )}
 
-                    <NavLink to="/products" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdOutlineInventory2 size={20} /> Products
-                    </NavLink>
+      {/* 🔹 Sidebar */}
+      <div
+        className={`fixed md:static top-0 left-0 h-full w-64 bg-gray-100 z-50 transform transition-transform duration-300 
+        ${open ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
+      >
 
-                    <NavLink to="/favorites" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdFavoriteBorder size={20} /> Favorites
-                    </NavLink>
-
-                    <NavLink to="/inbox" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdInbox size={20} /> Inbox
-                    </NavLink>
-
-                    <NavLink to="/orders" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdList size={20} /> Order Lists
-                    </NavLink>
-
-                    <NavLink to="/stock" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdOutlineInventory2 size={20} /> Product Stock
-                    </NavLink>
-
-                    {/* Pages */}
-                    <p className="text-gray-400 text-xs mt-4 px-4">PAGES</p>
-
-                    <NavLink to="/pricing" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdOutlineBarChart size={20} /> Pricing
-                    </NavLink>
-
-                    <NavLink to="/calendar" className={menuClass}>
-                        <MdOutlineCalendarToday size={20} /> Calendar
-                    </NavLink>
-
-                    <NavLink to="/todo" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdList size={20} /> To-Do
-                    </NavLink>
-
-                    <NavLink to="/contact" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdOutlineContacts size={20} /> Contact
-                    </NavLink>
-
-                    <NavLink to="/invoice" className={menuClass}>
-                        <MdOutlineBarChart size={20} /> Invoice
-                    </NavLink>
-
-                    <NavLink to="/uielements" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdOutlineBarChart size={20} /> UI Elements
-                    </NavLink>
-
-                    <NavLink to="/team" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdOutlineContacts size={20} /> Team
-                    </NavLink>
-
-
-                    <NavLink to="/settings" className={({ isActive }) => isActive ? activeClass : menuClass}>
-                        <MdOutlineSettings size={20} /> Settings
-                    </NavLink>
-
-
-
-                </div>
-
-                <button
-                    disabled
-                    className="flex items-center gap-2 py-2 px-3 text-xs text-gray-400 w-full cursor-not-allowed opacity-50"
-                >
-                    <MdLogout size={20} /> Logout
-                </button>
-            </div>
+        {/* 🔹 Close button */}
+        <div className="md:hidden flex justify-end p-4">
+          <img
+            src={slogo2}
+            className="w-6 h-6 cursor-pointer"
+            onClick={() => setOpen(false)}
+          />
         </div>
-    );
+
+        {/* 🔹 Menu */}
+        <div className="space-y-2 mt-4">
+
+          <img
+            src={bankdeshlogo}
+            alt=""
+            className="w-[200px] h-10 pl-3"
+          />
+
+          <NavLink to="/" onClick={() => setOpen(false)} className={({ isActive }) => isActive ? activeClass : menuClass}>
+            <img src={slogo1} className="w-5 h-5" /> Dashboard
+          </NavLink>
+
+          <NavLink to="/transactions" onClick={() => setOpen(false)} className={({ isActive }) => isActive ? activeClass : menuClass}>
+            <img src={slogo2} className="w-5 h-5" /> Transactions
+          </NavLink>
+
+          <NavLink to="/accounts" onClick={() => setOpen(false)} className={({ isActive }) => isActive ? activeClass : menuClass}>
+            <img src={slogo3} className="w-5 h-5" /> Accounts
+          </NavLink>
+
+          <NavLink to="/investments" onClick={() => setOpen(false)} className={({ isActive }) => isActive ? activeClass : menuClass}>
+            <img src={slogo4} className="w-5 h-5" /> Investments
+          </NavLink>
+
+          <NavLink to="/creditcards" onClick={() => setOpen(false)} className={({ isActive }) => isActive ? activeClass : menuClass}>
+            <img src={slogo5} className="w-5 h-5" /> Credit Cards
+          </NavLink>
+
+          <NavLink to="/loans" onClick={() => setOpen(false)} className={({ isActive }) => isActive ? activeClass : menuClass}>
+            <img src={slogo6} className="w-5 h-5" /> Loans
+          </NavLink>
+
+          <NavLink to="/services" onClick={() => setOpen(false)} className={({ isActive }) => isActive ? activeClass : menuClass}>
+            <img src={slogo7} className="w-5 h-5" /> Services
+          </NavLink>
+
+          {/* Disabled */}
+          <div className="flex items-center gap-3 py-3 px-4 text-sm text-gray-300 cursor-not-allowed">
+            <img src={slogo8} className="w-5 h-5 opacity-50" />
+            My Privileges
+          </div>
+
+          <NavLink to="/settings" onClick={() => setOpen(false)} className={({ isActive }) => isActive ? activeClass : menuClass}>
+            <img src={slogo9} className="w-5 h-5" /> Settings
+          </NavLink>
+
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Sidebar;
