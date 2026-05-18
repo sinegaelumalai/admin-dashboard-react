@@ -17,7 +17,7 @@ const MainLayout = () => {
 
         <Navbar setIsOpen={setIsOpen} />
 
-        <div className="flex-1 overflow-y-auto bg-gray-100 p-4">
+        <div className="flex-1 overflow-y-auto bg-gray-100 p-4 scroll-container">
           <Outlet />
         </div>
 

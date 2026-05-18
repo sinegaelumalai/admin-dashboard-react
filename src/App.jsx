@@ -10,12 +10,16 @@ import Services from "./component/services";
 import Settings from "./component/settings";
 import Preferences from "./component/preferences";
 import Security from "./component/security";
+import ScrollToTop from "./component/scrollToTop";
 
 
 
 const App = () => {
   return (
     <BrowserRouter>
+
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
@@ -29,8 +33,8 @@ const App = () => {
           <Route path="settings/preferences" element={<Preferences />} />
           <Route path="settings/security" element={<Security />} />
         </Route>
-
       </Routes>
+
     </BrowserRouter>
   );
 };
